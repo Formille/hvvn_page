@@ -12,16 +12,22 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-## Supabase 설정
+## Supabase 설정 (필수)
+
+처음 사이트를 띄우기 전에 반드시 아래를 끝내야 합니다. 안 하면
+관리자에서 "Could not find the table 'public.products'" 또는
+"Bucket not found" 가 뜹니다.
 
 1. https://supabase.com 에서 새 프로젝트 생성.
-2. **SQL Editor** 에서 `db/schema.sql` 의 내용을 실행.
-3. **Storage** → New bucket → 이름 `product-images`, **Public** 체크.
-4. **Authentication** → Users → 관리자 이메일/비밀번호 추가.
-5. Project Settings → API 에서 다음 키를 `.env.local` 에 복사:
+2. **SQL Editor → New query → `db/schema.sql` 전체 붙여넣기 → Run.**
+   - 테이블, RLS 정책, `product-images` Storage 버킷까지 모두 한 번에 생성됩니다.
+3. **Authentication → Users → Add user** 로 관리자 이메일/비밀번호 추가.
+4. **Project Settings → API** 에서 다음 키를 `.env.local`(로컬)과
+   Vercel 환경변수에 복사:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY` (서버 전용, 절대 노출 금지)
+5. (선택) `db/seed.sql` 실행해서 샘플 상품 3개 넣어보기.
 
 ## Google OAuth 연동 (선택)
 
