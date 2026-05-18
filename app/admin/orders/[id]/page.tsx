@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatKRW, formatDate } from "@/lib/format";
 import { ORDER_STATUS_LABEL, type Order, type OrderItem } from "@/lib/types";
 import { OrderStatusSelect } from "@/components/order-status-select";
 
 export default async function AdminOrderDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data: order } = await sb.from("orders").select("*").eq("id", id).maybeSingle<Order>();
   if (!order) notFound();
   const { data: items } = await sb.from("order_items").select("*").eq("order_id", id);

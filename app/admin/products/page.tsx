@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatKRW } from "@/lib/format";
 import type { Product } from "@/lib/types";
 
 export default async function AdminProductsPage() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data } = await sb.from("products").select("*").order("created_at", { ascending: false });
   const list = (data ?? []) as Product[];
 

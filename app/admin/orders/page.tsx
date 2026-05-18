@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatKRW, formatDate } from "@/lib/format";
 import { ORDER_STATUS_LABEL, type Order, type OrderStatus } from "@/lib/types";
 import { OrderStatusSelect } from "@/components/order-status-select";
@@ -12,7 +12,7 @@ export default async function AdminOrdersPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const { status } = await searchParams;
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   let q = sb.from("orders").select("*").order("created_at", { ascending: false }).limit(200);
   if (status && STATUSES.includes(status as OrderStatus)) q = q.eq("status", status);
   const { data: orders } = await q;

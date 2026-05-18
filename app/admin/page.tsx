@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatKRW } from "@/lib/format";
 
+// Authenticated via middleware → use service role to bypass RLS for admin queries.
 export default async function AdminDashboard() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const [pending, products, lowStock, openInq, waitlist] = await Promise.all([
     sb.from("orders").select("id, total_krw", { count: "exact" }).eq("status", "pending_payment"),
     sb.from("products").select("id", { count: "exact" }),

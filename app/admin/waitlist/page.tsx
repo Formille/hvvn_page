@@ -1,9 +1,9 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/format";
 import { MarkNotifiedButton } from "@/components/mark-notified-button";
 
 export default async function WaitlistPage() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data } = await sb
     .from("waitlist")
     .select("*, products(name, slug, stock)")

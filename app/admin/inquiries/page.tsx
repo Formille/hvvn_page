@@ -1,9 +1,9 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { formatDate } from "@/lib/format";
 import { InquiryRow } from "@/components/inquiry-row";
 
 export default async function AdminInquiriesPage() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data } = await sb
     .from("inquiries")
     .select("*, orders(order_number)")

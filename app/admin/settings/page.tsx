@@ -1,9 +1,9 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { SettingsForm } from "@/components/settings-form";
 import type { Settings } from "@/lib/types";
 
 export default async function AdminSettingsPage() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data } = await sb.from("settings").select("*").eq("id", 1).maybeSingle<Settings>();
   return (
     <div>

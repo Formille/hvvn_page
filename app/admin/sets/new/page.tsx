@@ -1,9 +1,9 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { SetForm } from "@/components/set-form";
 import type { Product } from "@/lib/types";
 
 export default async function NewSetPage() {
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data } = await sb.from("products").select("*").eq("is_set", false).order("created_at", { ascending: false });
   const candidates = (data ?? []) as Product[];
 

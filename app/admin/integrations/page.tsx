@@ -1,10 +1,10 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServiceClient } from "@/lib/supabase/server";
 import { listIntegrations } from "@/lib/integrations";
 import { DisconnectButton } from "@/components/disconnect-button";
 
 export default async function IntegrationsPage() {
   const providers = listIntegrations();
-  const sb = await createSupabaseServerClient();
+  const sb = createSupabaseServiceClient();
   const { data: connected } = await sb.from("integrations").select("provider, account_email, scopes, expires_at, updated_at");
   const byProvider = new Map((connected ?? []).map((c) => [c.provider, c]));
 
