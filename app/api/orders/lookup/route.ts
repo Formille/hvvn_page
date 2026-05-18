@@ -20,14 +20,14 @@ export async function POST(req: Request) {
 
   if (!orders || orders.length === 0) return NextResponse.json({ orders: [] });
 
-  const ids = orders.map((o) => o.id);
+  const ids = orders.map((o: { id: string }) => o.id);
   const { data: items } = await sb.from("order_items").select("*").in("order_id", ids);
-  const byOrder = new Map<string, any[]>();
-  for (const it of items ?? []) {
+  const byOrder = new Map<string, unknown[]>();
+  for (const it of (items ?? []) as { order_id: string }[]) {
     const list = byOrder.get(it.order_id) ?? [];
     list.push(it);
     byOrder.set(it.order_id, list);
   }
-  const enriched = orders.map((o) => ({ ...o, items: byOrder.get(o.id) ?? [] }));
+  const enriched = orders.map((o: { id: string }) => ({ ...o, items: byOrder.get(o.id) ?? [] }));
   return NextResponse.json({ orders: enriched });
 }

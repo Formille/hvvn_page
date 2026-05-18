@@ -41,7 +41,8 @@ export async function POST(req: Request) {
     .in("id", ids);
   if (pErr) return NextResponse.json({ error: pErr.message }, { status: 500 });
 
-  const productMap = new Map(products?.map((p) => [p.id, p]));
+  type ProductRow = { id: string; name: string; price_krw: number; stock: number; is_published: boolean };
+  const productMap = new Map<string, ProductRow>(((products ?? []) as ProductRow[]).map((p) => [p.id, p]));
   let subtotal = 0;
   for (const item of input.items) {
     const p = productMap.get(item.product_id);

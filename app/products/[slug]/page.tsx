@@ -39,9 +39,8 @@ export default async function ProductDetailPage({
       .select("member_id, position, products:member_id(*)")
       .eq("set_id", product.id)
       .order("position", { ascending: true });
-    setMembers = (setItems ?? [])
-      .map((row: { products: Product | null }) => row.products)
-      .filter((p): p is Product => !!p);
+    setMembers = ((setItems ?? []) as Array<{ products: Product | Product[] | null }>)
+      .flatMap((row) => (Array.isArray(row.products) ? row.products : row.products ? [row.products] : []));
   }
 
   return (
