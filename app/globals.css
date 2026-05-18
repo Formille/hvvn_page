@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
+}
+
+html, body {
+  background-color: #F5F2EC;
+  color: #1A1A18;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-ink bg-ink text-paper transition hover:bg-paper hover:text-ink;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-ink bg-transparent text-ink transition hover:bg-ink hover:text-paper;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-3 py-2 text-[12px] tracking-widest2 uppercase text-ink/70 hover:text-ink transition;
+  }
+  .input {
+    @apply w-full bg-transparent border-b border-line py-3 text-[14px] placeholder:text-muted focus:outline-none focus:border-ink transition;
+  }
+  .input-box {
+    @apply w-full bg-paper border border-line px-3 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:border-ink transition;
+  }
+  .label {
+    @apply block text-[11px] tracking-widest2 uppercase text-muted mb-1;
+  }
+  .hairline {
+    @apply border-t border-line;
+  }
+  .container-page {
+    @apply mx-auto max-w-page px-5 md:px-8;
+  }
+  .eyebrow {
+    @apply text-[11px] tracking-widest2 uppercase text-muted;
+  }
+  .h-display {
+    @apply font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight;
+  }
+}
+
+.prose-store h1, .prose-store h2, .prose-store h3 { font-family: var(--font-serif); }
+.prose-store p { margin-bottom: 0.75rem; line-height: 1.7; }
+.prose-store a { text-decoration: underline; }
+.prose-store ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.prose-store img { margin: 1rem 0; max-width: 100%; }
+.prose-store blockquote { border-left: 2px solid #1A1A18; padding-left: 1rem; font-style: italic; color: #4a4a48; }
