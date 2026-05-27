@@ -42,7 +42,7 @@ export function SiteDecor() {
           playsInline
           aria-hidden
           src={video}
-          className="pointer-events-none fixed bottom-3 right-3 md:bottom-5 md:right-5 w-16 md:w-24 z-0 opacity-90"
+          className="pointer-events-none fixed bottom-3 right-3 md:bottom-5 md:right-5 w-16 md:w-24 z-0 opacity-90 mix-blend-screen"
         />
       )}
     </>
