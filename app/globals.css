@@ -5,31 +5,80 @@
 :root {
   --font-sans: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
+  --font-gothic: "Pirata One", "UnifrakturCook", Georgia, serif;
 }
 
 html, body {
-  background-color: #F5F2EC;
-  color: #1A1A18;
+  background-color: #0c0e28;
+  color: #eef0fb;
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
+}
+
+/* Crushed-velvet background (CSS-only, no asset required). */
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: #0c0e28;
+  background-image:
+    radial-gradient(120% 75% at 50% -8%, #39409a 0%, #20245e 38%, #0e1030 72%, #08091f 100%);
+  background-attachment: fixed;
+}
+body::before {
+  /* velvet sheen streaks */
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 2px,
+      transparent 7px
+    ),
+    repeating-linear-gradient(
+      80deg,
+      rgba(0, 0, 0, 0.05) 0px,
+      rgba(0, 0, 0, 0.05) 1px,
+      transparent 3px,
+      transparent 11px
+    );
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+}
+body::after {
+  /* fractal-noise grain for the fuzzy velvet feel */
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-ink bg-ink text-paper transition hover:bg-paper hover:text-ink;
+    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-chrome bg-chrome text-velvetDeep transition hover:bg-transparent hover:text-chrome;
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-ink bg-transparent text-ink transition hover:bg-ink hover:text-paper;
+    @apply inline-flex items-center justify-center px-5 py-3 text-[13px] tracking-widest2 uppercase border border-chrome/70 bg-transparent text-chrome transition hover:bg-chrome hover:text-velvetDeep;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-3 py-2 text-[12px] tracking-widest2 uppercase text-ink/70 hover:text-ink transition;
+    @apply inline-flex items-center justify-center px-3 py-2 text-[12px] tracking-widest2 uppercase text-chrome/70 hover:text-chrome transition;
   }
   .input {
-    @apply w-full bg-transparent border-b border-line py-3 text-[14px] placeholder:text-muted focus:outline-none focus:border-ink transition;
+    @apply w-full bg-transparent border-b border-line py-3 text-[14px] text-chrome placeholder:text-muted focus:outline-none focus:border-chrome transition;
   }
   .input-box {
-    @apply w-full bg-paper border border-line px-3 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:border-ink transition;
+    @apply w-full bg-velvetDeep/60 border border-line px-3 py-3 text-[14px] text-chrome placeholder:text-muted focus:outline-none focus:border-chrome transition;
   }
   .label {
     @apply block text-[11px] tracking-widest2 uppercase text-muted mb-1;
@@ -44,13 +93,23 @@ html, body {
     @apply text-[11px] tracking-widest2 uppercase text-muted;
   }
   .h-display {
-    @apply font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight;
+    @apply font-gothic text-5xl md:text-7xl leading-[1.02] tracking-tight text-chrome;
+  }
+  .chrome-text {
+    background: linear-gradient(180deg, #ffffff 0%, #c3c8e6 45%, #6e76b4 55%, #eef0fb 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .panel {
+    @apply bg-sand/50 border border-line backdrop-blur-sm;
   }
 }
 
-.prose-store h1, .prose-store h2, .prose-store h3 { font-family: var(--font-serif); }
+.prose-store h1, .prose-store h2, .prose-store h3 { font-family: var(--font-gothic); color: #eef0fb; }
 .prose-store p { margin-bottom: 0.75rem; line-height: 1.7; }
 .prose-store a { text-decoration: underline; }
 .prose-store ul { list-style: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; }
 .prose-store img { margin: 1rem 0; max-width: 100%; }
-.prose-store blockquote { border-left: 2px solid #1A1A18; padding-left: 1rem; font-style: italic; color: #4a4a48; }
+.prose-store blockquote { border-left: 2px solid #aeb6ee; padding-left: 1rem; font-style: italic; color: #c3c8e6; }
