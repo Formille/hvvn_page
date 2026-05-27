@@ -7,11 +7,24 @@ import { siteAsset } from "@/lib/assets";
  * Both sit behind the page content (z-0) and ignore pointer events.
  */
 export function SiteDecor() {
+  const bg = siteAsset("bg.png");
   const calligraphy = siteAsset("hvving.png");
   const video = siteAsset("banner_animate.mp4");
 
   return (
     <>
+      {bg && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 z-0"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "auto 100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
+      )}
       {calligraphy && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
