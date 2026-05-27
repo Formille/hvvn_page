@@ -24,20 +24,20 @@ export default async function AdminProductsPage() {
           <Link
             key={p.id}
             href={`/admin/products/${p.id}/edit`}
-            className="grid grid-cols-[60px_1fr_120px_100px_80px] gap-4 items-center border border-line p-3 hover:bg-sand/30"
+            className="flex gap-4 items-center border border-line p-3 hover:bg-velvetGlow/20 transition"
           >
-            <div className="relative aspect-square bg-sand">
-              {p.thumbnail_url && <Image src={p.thumbnail_url} alt={p.name} fill className="object-cover" sizes="60px" />}
+            <div className="relative w-14 h-14 shrink-0 bg-velvetGlow/20">
+              {p.thumbnail_url && <Image src={p.thumbnail_url} alt={p.name} fill className="object-contain" sizes="56px" />}
             </div>
-            <div>
-              <div className="font-serif text-lg">{p.name}</div>
-              <div className="text-xs text-muted font-mono">{p.slug}</div>
-            </div>
-            <div className="text-sm">{formatKRW(p.price_krw)}</div>
-            <div className={`text-sm ${p.stock === 0 ? "text-accent" : ""}`}>재고 {p.stock}</div>
-            <div className="flex gap-1 flex-wrap text-[10px] tracking-widest2 uppercase">
-              {p.is_set && <span className="border border-line px-1.5 py-0.5">Set</span>}
-              {!p.is_published && <span className="border border-line px-1.5 py-0.5">Draft</span>}
+            <div className="flex-1 min-w-0">
+              <div className="font-gothic text-lg text-chrome truncate">{p.name}</div>
+              <div className="text-xs text-muted font-mono truncate">{p.slug}</div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1 text-sm">
+                <span className="text-chrome">{formatKRW(p.price_krw)}</span>
+                <span className={p.stock === 0 ? "text-accent" : "text-muted"}>재고 {p.stock}</span>
+                {p.is_set && <span className="text-[10px] tracking-widest2 uppercase border border-line px-1.5 py-0.5 text-muted">Set</span>}
+                {!p.is_published && <span className="text-[10px] tracking-widest2 uppercase border border-line px-1.5 py-0.5 text-muted">Draft</span>}
+              </div>
             </div>
           </Link>
         ))}

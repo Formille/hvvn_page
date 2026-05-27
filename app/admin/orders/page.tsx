@@ -29,8 +29,8 @@ export default async function AdminOrdersPage({
         ))}
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0">
+        <table className="w-full text-sm min-w-[680px]">
           <thead className="text-[11px] tracking-widest2 uppercase text-muted">
             <tr className="text-left border-b border-line">
               <th className="py-3 pr-3">주문번호</th>

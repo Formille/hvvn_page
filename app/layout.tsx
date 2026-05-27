@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { SiteDecor } from "@/components/site-decor";
 
 export const metadata: Metadata = {
@@ -30,8 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteDecor />
         <div className="relative z-10">
           <SiteHeader />
-          <main className="min-h-[60vh]">{children}</main>
-          <SiteFooter />
+          <main className="min-h-[70vh]">{children}</main>
         </div>
       </body>
     </html>

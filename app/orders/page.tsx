@@ -45,16 +45,16 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="container-page py-16 max-w-3xl">
-      <div className="eyebrow mb-3">— Orders</div>
-      <h1 className="font-serif text-4xl mb-8">주문 조회</h1>
+    <div className="container-page py-12 md:py-16 max-w-3xl">
+      <div className="eyebrow mb-2">— Orders</div>
+      <h1 className="font-gothic chrome-text text-4xl md:text-6xl mb-10">orders</h1>
 
       <form
         onSubmit={(e) => {
           e.preventDefault();
           search();
         }}
-        className="grid grid-cols-[1fr_1fr_auto] gap-3 items-end"
+        className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-4 sm:gap-3 sm:items-end"
       >
         <label>
           <span className="label">이름</span>
@@ -64,7 +64,7 @@ export default function OrdersPage() {
           <span className="label">전화번호</span>
           <input className="input" value={phone} onChange={(e) => setPhone(e.target.value)} required placeholder="01012345678" />
         </label>
-        <button className="btn">조회</button>
+        <button className="btn w-full sm:w-auto">조회</button>
       </form>
       {error && <div className="mt-4 text-sm text-accent">{error}</div>}
 
@@ -77,13 +77,13 @@ export default function OrdersPage() {
       {results && results.length > 0 && (
         <ul className="mt-12 space-y-6">
           {results.map((o) => (
-            <li key={o.id} className="border border-line p-6">
-              <div className="flex justify-between items-start mb-3">
+            <li key={o.id} className="border border-line p-5 sm:p-6">
+              <div className="flex justify-between items-start gap-3 mb-4">
                 <div>
-                  <div className="font-mono text-sm">{o.order_number}</div>
+                  <div className="font-mono text-sm text-chrome">{o.order_number}</div>
                   <div className="text-xs text-muted">{formatDate(o.created_at)}</div>
                 </div>
-                <div className="text-[11px] tracking-widest2 uppercase border border-ink px-2 py-1">
+                <div className="text-[11px] tracking-widest2 uppercase border border-chrome/60 text-chrome px-2 py-1 whitespace-nowrap">
                   {ORDER_STATUS_LABEL[o.status]}
                 </div>
               </div>
@@ -163,7 +163,7 @@ function InquiryForm({ orderId, customerName, customerPhone, email }: { orderId:
   }
 
   return (
-    <form onSubmit={send} className="mt-4 space-y-3 bg-sand/30 p-4">
+    <form onSubmit={send} className="mt-4 space-y-3 border border-line p-4">
       <label className="block">
         <span className="label">이메일 (답변 받을 주소)</span>
         <input className="input" type="email" required value={emailVal} onChange={(e) => setEmailVal(e.target.value)} />
@@ -173,7 +173,7 @@ function InquiryForm({ orderId, customerName, customerPhone, email }: { orderId:
         <textarea className="input-box" rows={4} required value={msg} onChange={(e) => setMsg(e.target.value)} />
       </label>
       {err && <div className="text-xs text-accent">{err}</div>}
-      <button className="btn-outline" disabled={status === "sending"}>{status === "sending" ? "..." : "문의 보내기"}</button>
+      <button className="btn-outline w-full sm:w-auto" disabled={status === "sending"}>{status === "sending" ? "..." : "문의 보내기"}</button>
     </form>
   );
 }

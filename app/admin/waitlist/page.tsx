@@ -13,7 +13,8 @@ export default async function WaitlistPage() {
     <div>
       <h2 className="font-serif text-2xl mb-6">재입고 알림 대기</h2>
       <p className="text-sm text-muted mb-6">상품 재고를 채우면 이 페이지에서 알림 발송을 표시할 수 있습니다. (Gmail 연동 시 자동 발송 옵션 활성)</p>
-      <table className="w-full text-sm">
+      <div className="overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0">
+      <table className="w-full text-sm min-w-[640px]">
         <thead className="text-[11px] tracking-widest2 uppercase text-muted">
           <tr className="text-left border-b border-line">
             <th className="py-3 pr-3">상품</th>
@@ -44,6 +45,7 @@ export default async function WaitlistPage() {
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

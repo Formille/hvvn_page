@@ -50,6 +50,10 @@ export function HeaderMenu() {
           <Link href="/orders" onClick={() => setOpen(false)} className="block px-4 py-2 hover:bg-velvetGlow/40 transition">
             Orders
           </Link>
+          <div className="my-1 border-t border-line" />
+          <Link href="/admin" onClick={() => setOpen(false)} className="block px-4 py-2 text-muted hover:text-chrome hover:bg-velvetGlow/40 transition">
+            Admin
+          </Link>
         </div>
       )}
     </div>
