@@ -30,7 +30,7 @@ export default async function HomePage() {
                   src={p.thumbnail_url}
                   alt={p.name}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
                 />
               )}

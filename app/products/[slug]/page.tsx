@@ -49,7 +49,7 @@ export default async function ProductDetailPage({
       <div className="space-y-3">
         <div className="relative aspect-[4/5] bg-sand overflow-hidden">
           {product.thumbnail_url && (
-            <Image src={product.thumbnail_url} alt={product.name} fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
+            <Image src={product.thumbnail_url} alt={product.name} fill className="object-contain" priority sizes="(max-width: 768px) 100vw, 50vw" />
           )}
         </div>
         {imgs.length > 0 && (

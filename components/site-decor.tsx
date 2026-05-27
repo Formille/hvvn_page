@@ -18,7 +18,7 @@ export function SiteDecor() {
           src={calligraphy}
           alt=""
           aria-hidden
-          className="pointer-events-none select-none fixed left-1 md:left-6 top-1/2 -translate-y-1/2 h-[42vh] md:h-[66vh] w-auto object-contain z-0 opacity-50 md:opacity-60"
+          className="pointer-events-none select-none fixed left-0 md:left-6 top-1/2 -translate-y-1/2 -translate-x-[32%] md:translate-x-0 h-[40vh] md:h-[66vh] w-auto object-contain z-0 opacity-50 md:opacity-60"
         />
       )}
       {video && (
