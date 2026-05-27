@@ -1,15 +1,17 @@
 /**
- * Upload local product/logo images to Supabase Storage and print their
- * public URLs. Run locally with your service-role key:
+ * Upload local images to Supabase Storage and print their public URLs.
  *
  *   NEXT_PUBLIC_SUPABASE_URL=... SUPABASE_SERVICE_ROLE_KEY=... \
  *   node scripts/upload-to-supabase.mjs
  *
- * Requires the `product-images` bucket (created by db/schema.sql).
- * Re-runnable: existing objects are overwritten (upsert).
+ * Uploads:
+ *   public/images/products/*  -> bucket "product-images" (folder seed/)
+ *   public/images/*.png (logos/banners) -> bucket "site-assets"
+ *
+ * Both buckets are created by db/schema.sql. Re-runnable (upsert).
  */
 import { createClient } from "@supabase/supabase-js";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -20,30 +22,40 @@ if (!url || !key) {
 }
 
 const sb = createClient(url, key, { auth: { persistSession: false } });
-const BUCKET = "product-images";
-const dir = "public/images/products";
+const TYPES = { ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".svg": "image/svg+xml" };
+const isImage = (f) => /\.(png|jpe?g|webp|svg)$/i.test(f);
 
-const contentTypes = { ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp" };
-
-const files = readdirSync(dir).filter((f) => /\.(png|jpe?g|webp)$/i.test(f));
-const results = {};
-
-for (const file of files) {
-  const buf = readFileSync(join(dir, file));
-  const ext = file.slice(file.lastIndexOf(".")).toLowerCase();
-  const path = `seed/${file}`;
-  const { error } = await sb.storage.from(BUCKET).upload(path, buf, {
-    contentType: contentTypes[ext] ?? "application/octet-stream",
+async function uploadOne(bucket, path, fsPath) {
+  const buf = readFileSync(fsPath);
+  const ext = fsPath.slice(fsPath.lastIndexOf(".")).toLowerCase();
+  const { error } = await sb.storage.from(bucket).upload(path, buf, {
+    contentType: TYPES[ext] ?? "application/octet-stream",
     upsert: true,
   });
   if (error) {
-    console.error(`✗ ${file}: ${error.message}`);
-    continue;
+    console.error(`✗ ${bucket}/${path}: ${error.message}`);
+    return null;
   }
-  const { data } = sb.storage.from(BUCKET).getPublicUrl(path);
-  results[file] = data.publicUrl;
-  console.log(`✓ ${file} -> ${data.publicUrl}`);
+  const { data } = sb.storage.from(bucket).getPublicUrl(path);
+  console.log(`✓ ${bucket}/${path}\n   ${data.publicUrl}`);
+  return data.publicUrl;
 }
 
-console.log("\n--- Update products.thumbnail_url with these URLs (e.g. in /admin/products) ---");
+const results = { products: {}, assets: {} };
+
+// Product photos -> product-images/seed/
+const productsDir = "public/images/products";
+for (const f of readdirSync(productsDir).filter(isImage)) {
+  const u = await uploadOne("product-images", `seed/${f}`, join(productsDir, f));
+  if (u) results.products[f] = u;
+}
+
+// Logos / banners (top-level files in public/images) -> site-assets/
+const imagesDir = "public/images";
+for (const f of readdirSync(imagesDir).filter((f) => isImage(f) && statSync(join(imagesDir, f)).isFile())) {
+  const u = await uploadOne("site-assets", f, join(imagesDir, f));
+  if (u) results.assets[f] = u;
+}
+
+console.log("\n--- public URLs (use these for products.thumbnail_url / logo src) ---");
 console.log(JSON.stringify(results, null, 2));

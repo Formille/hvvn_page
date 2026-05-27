@@ -170,15 +170,23 @@ create policy "product_set_items: public read" on public.product_set_items
 -- Orders / inquiries / waitlist / integrations: NO anon policies. Server uses service role.
 
 -- =====================================================
--- Storage bucket for product images
--- (Service role uploads from /api/admin/upload bypass RLS; this
---  bucket just needs to exist and be public for image URLs.)
+-- Storage buckets
+--   product-images : 상품 사진 (admin 업로드)
+--   site-assets    : 로고/배너/기타 사이트 에셋
+-- (Service role uploads bypass RLS; buckets just need to exist and be
+--  public so the generated URLs are readable.)
 -- =====================================================
 insert into storage.buckets (id, name, public)
-values ('product-images', 'product-images', true)
+values
+  ('product-images', 'product-images', true),
+  ('site-assets', 'site-assets', true)
 on conflict (id) do nothing;
 
--- Public read for the product-images bucket
+-- Public read for both buckets
 drop policy if exists "product-images public read" on storage.objects;
 create policy "product-images public read" on storage.objects
   for select using (bucket_id = 'product-images');
+
+drop policy if exists "site-assets public read" on storage.objects;
+create policy "site-assets public read" on storage.objects
+  for select using (bucket_id = 'site-assets');
