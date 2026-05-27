@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteDecor } from "@/components/site-decor";
 
 export const metadata: Metadata = {
   title: "hvving — artist goods",
@@ -26,9 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <SiteHeader />
-        <main className="min-h-[60vh]">{children}</main>
-        <SiteFooter />
+        <SiteDecor />
+        <div className="relative z-10">
+          <SiteHeader />
+          <main className="min-h-[60vh]">{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );
