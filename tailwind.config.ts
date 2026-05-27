@@ -5,16 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark velvet + chrome (Y2K metal gothic) palette.
-        paper: "#14163a", // base velvet (page bg)
-        ink: "#eef0fb", // chrome white (primary text / chrome buttons)
-        muted: "#9aa0d0", // muted lavender-grey
-        line: "#3b3f78", // hairlines on dark
-        sand: "#1e2150", // lifted panel / card surface
-        accent: "#aeb6ee", // steel highlight
-        velvetDeep: "#0a0b22",
-        velvetGlow: "#39409a",
-        chrome: "#d7dbec",
+        // Solid black + chrome (Y2K metal gothic) palette.
+        paper: "#000000", // base (page bg)
+        ink: "#f2f2f5", // chrome white (primary text / chrome buttons)
+        muted: "#8a8a92", // muted grey
+        line: "#262626", // hairlines on black
+        sand: "#0d0d0d", // lifted panel / card surface
+        accent: "#cfcfd6", // steel highlight
+        velvetDeep: "#000000",
+        velvetGlow: "#1a1a1a",
+        chrome: "#dcdce4",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
