@@ -61,6 +61,13 @@ body {
   .panel {
     @apply bg-sand/50 border border-line backdrop-blur-sm;
   }
+  .tilt {
+    transform: rotate(var(--tilt, 0deg));
+    transition: transform 0.45s ease;
+  }
+  .group:hover .tilt {
+    transform: rotate(0deg) scale(1.02);
+  }
 }
 
 .prose-store h1, .prose-store h2, .prose-store h3 { font-family: var(--font-gothic); color: #eef0fb; }
