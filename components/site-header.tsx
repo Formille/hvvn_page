@@ -15,7 +15,7 @@ export function SiteHeader() {
             <BrandLogo
               src={headerLogo}
               alt="hvving"
-              className="h-[37px] md:h-8 w-auto object-contain scale-x-[1.4] scale-y-[1.1] origin-center"
+              className="h-[37px] md:h-8 w-auto object-contain scale-x-[1.96] scale-y-[1.21] origin-center"
               fallbackClassName="text-lg"
             />
           </Link>

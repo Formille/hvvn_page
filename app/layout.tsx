@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteDecor } from "@/components/site-decor";
+import { siteAsset } from "@/lib/assets";
+
+const ogImage = siteAsset("header_1.png");
 
 export const metadata: Metadata = {
-  title: "hvving — artist goods",
-  description: "hvving 아티스트 공식 굿즈 스토어",
+  title: "Debone",
+  description: "from hvvn",
   openGraph: {
-    title: "hvving — artist goods",
-    description: "hvving 아티스트 공식 굿즈 스토어",
+    title: "Debone",
+    description: "from hvvn",
+    type: "website",
+    siteName: "Debone",
+    ...(ogImage ? { images: [{ url: ogImage, alt: "Debone — from hvvn" }] } : {}),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Debone",
+    description: "from hvvn",
+    ...(ogImage ? { images: [ogImage] } : {}),
   },
 };
 

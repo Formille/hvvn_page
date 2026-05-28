@@ -55,25 +55,41 @@ body {
     background-image: linear-gradient(
       180deg,
       #ffffff 0%,
-      #d8dce8 18%,
-      #8b91ad 42%,
-      #3d4262 50%,
-      #8b91ad 58%,
-      #d8dce8 82%,
-      #ffffff 100%
+      #f1f4fb 6%,
+      #c2cce0 16%,
+      #6a7593 28%,
+      #1f2540 44%,
+      #4a6097 50%,
+      #1f2540 56%,
+      #6a7593 70%,
+      #c8d2e6 84%,
+      #ffffff 97%
     );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 0 6px rgba(140, 150, 220, 0.18));
+    -webkit-text-stroke: 0.6px rgba(18, 22, 38, 0.7);
+    filter:
+      drop-shadow(0 1px 0 rgba(0, 0, 0, 0.85))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 10px rgba(120, 170, 255, 0.2));
   }
   .chrome-text-soft {
-    background-image: linear-gradient(180deg, #f1f3fb 0%, #b9bdd2 45%, #7c809a 55%, #e7e9f3 100%);
+    background-image: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d6dceb 35%,
+      #5b6280 52%,
+      #aab2cc 70%,
+      #f2f5fc 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.4px rgba(18, 22, 38, 0.55);
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.6));
   }
   .panel {
     @apply bg-sand/50 border border-line backdrop-blur-sm;
