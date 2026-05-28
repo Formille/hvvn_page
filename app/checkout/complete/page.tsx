@@ -29,7 +29,7 @@ export default async function CompletePage({
   return (
     <div className="container-page py-16 max-w-2xl">
       <div className="eyebrow mb-3">— Order placed</div>
-      <h1 className="font-gothic chrome-text text-4xl md:text-5xl mb-2">주문이 접수되었습니다.</h1>
+      <h1 className="chrome-text text-4xl md:text-5xl mb-2">주문이 접수되었습니다.</h1>
       <p className="text-muted">아래 계좌로 입금이 확인되면 배송이 시작됩니다.</p>
 
       <div className="hairline my-10" />

@@ -6,6 +6,7 @@
   --font-sans: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
   --font-gothic: "Pirata One", "UnifrakturCook", Georgia, serif;
+  --font-dot: "Doto", "Major Mono Display", ui-monospace, monospace;
 }
 
 html, body {
@@ -52,44 +53,29 @@ body {
     @apply font-gothic text-5xl md:text-7xl leading-[1.02] tracking-tight text-chrome;
   }
   .chrome-text {
-    background-image: linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #f1f4fb 6%,
-      #c2cce0 16%,
-      #6a7593 28%,
-      #1f2540 44%,
-      #4a6097 50%,
-      #1f2540 56%,
-      #6a7593 70%,
-      #c8d2e6 84%,
-      #ffffff 97%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.6px rgba(18, 22, 38, 0.7);
-    filter:
-      drop-shadow(0 1px 0 rgba(0, 0, 0, 0.85))
-      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 10px rgba(120, 170, 255, 0.2));
+    font-family: var(--font-dot);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #d6d9e2;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+    -webkit-text-stroke: 0;
+    filter: none;
+    text-shadow: none;
   }
   .chrome-text-soft {
-    background-image: linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #d6dceb 35%,
-      #5b6280 52%,
-      #aab2cc 70%,
-      #f2f5fc 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 0.4px rgba(18, 22, 38, 0.55);
-    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.6));
+    font-family: var(--font-dot);
+    font-weight: 500;
+    color: #a9aebc;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+    -webkit-text-stroke: 0;
+    filter: none;
+    text-shadow: none;
   }
   .panel {
     @apply bg-sand/50 border border-line backdrop-blur-sm;

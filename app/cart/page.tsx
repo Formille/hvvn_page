@@ -22,7 +22,7 @@ export default function CartPage() {
     return (
       <div className="container-page py-32 flex flex-col items-center text-center">
         <div className="eyebrow mb-4">— Cart</div>
-        <h1 className="font-gothic chrome-text text-4xl md:text-5xl mb-8">empty</h1>
+        <h1 className="chrome-text text-4xl md:text-5xl mb-8">empty</h1>
         <p className="text-sm text-muted mb-8">장바구니가 비어 있습니다.</p>
         <Link href="/" className="btn-outline">Continue shopping</Link>
       </div>
@@ -32,7 +32,7 @@ export default function CartPage() {
   return (
     <div className="container-page py-12 md:py-16">
       <div className="eyebrow mb-2">— Cart · {lines.length}</div>
-      <h1 className="font-gothic chrome-text text-4xl md:text-6xl mb-10">cart</h1>
+      <h1 className="chrome-text text-4xl md:text-6xl mb-10">cart</h1>
 
       <div className="grid lg:grid-cols-3 gap-10 lg:gap-14">
         <ul className="lg:col-span-2 border-t border-line">
@@ -43,10 +43,10 @@ export default function CartPage() {
               </Link>
               <div className="flex-1 min-w-0 flex flex-col">
                 <div className="flex justify-between gap-3">
-                  <Link href={`/products/${l.slug}`} className="font-gothic chrome-text text-2xl sm:text-3xl leading-tight hover:opacity-80 transition truncate">
+                  <Link href={`/products/${l.slug}`} className="chrome-text text-2xl sm:text-3xl leading-tight hover:opacity-80 transition truncate">
                     {l.name}
                   </Link>
-                  <div className="text-sm chrome-text-soft font-gothic whitespace-nowrap">{formatKRW(l.price_krw * l.quantity)}</div>
+                  <div className="text-sm chrome-text-soft whitespace-nowrap">{formatKRW(l.price_krw * l.quantity)}</div>
                 </div>
                 <div className="text-xs text-muted mt-1">{formatKRW(l.price_krw)} / 개</div>
                 <div className="flex items-center gap-4 mt-auto pt-3">
@@ -67,7 +67,7 @@ export default function CartPage() {
             <div className="eyebrow">— Summary</div>
             <div className="flex justify-between items-baseline">
               <span className="text-sm text-muted">상품 합계</span>
-              <span className="font-gothic chrome-text text-2xl">{formatKRW(subtotal)}</span>
+              <span className="chrome-text text-2xl">{formatKRW(subtotal)}</span>
             </div>
             <p className="text-xs text-muted">배송비는 결제 단계에서 계산됩니다.</p>
             <div className="hairline" />

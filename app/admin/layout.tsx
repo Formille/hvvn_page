@@ -11,7 +11,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-3 mb-6">
         <div>
           <div className="eyebrow">— Admin</div>
-          <h1 className="font-gothic chrome-text text-3xl md:text-4xl">hvving admin</h1>
+          <h1 className="chrome-text text-3xl md:text-4xl">hvving admin</h1>
         </div>
         {user && (
           <div className="flex items-center gap-4 text-sm">

@@ -47,7 +47,7 @@ export default function OrdersPage() {
   return (
     <div className="container-page py-12 md:py-16 max-w-3xl">
       <div className="eyebrow mb-2">— Orders</div>
-      <h1 className="font-gothic chrome-text text-4xl md:text-6xl mb-10">orders</h1>
+      <h1 className="chrome-text text-4xl md:text-6xl mb-10">orders</h1>
 
       <form
         onSubmit={(e) => {
@@ -101,7 +101,7 @@ export default function OrdersPage() {
               </div>
               <div className="flex justify-between items-baseline mt-1">
                 <span className="text-sm text-muted">합계</span>
-                <span className="font-gothic chrome-text text-xl">{formatKRW(o.total_krw)}</span>
+                <span className="chrome-text text-xl">{formatKRW(o.total_krw)}</span>
               </div>
               <div className="mt-4 flex gap-2">
                 <button onClick={() => setInquiryFor(inquiryFor === o.id ? null : o.id)} className="btn-ghost px-0 underline">

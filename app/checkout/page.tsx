@@ -72,7 +72,7 @@ export default function CheckoutPage() {
       <form onSubmit={submit} className="md:col-span-2 space-y-10">
         <div>
           <div className="eyebrow mb-3">— Step 1</div>
-          <h1 className="font-gothic chrome-text text-3xl md:text-4xl mb-6">주문자 정보</h1>
+          <h1 className="chrome-text text-3xl md:text-4xl mb-6">주문자 정보</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
             <Field label="이름" required value={form.customer_name} onChange={(v) => setForm({ ...form, customer_name: v })} />
             <Field label="전화번호" required value={form.customer_phone} onChange={(v) => setForm({ ...form, customer_phone: v })} placeholder="01012345678" />
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
 
         <div>
           <div className="eyebrow mb-3">— Step 2</div>
-          <h2 className="font-gothic chrome-text text-3xl md:text-4xl mb-6">배송지</h2>
+          <h2 className="chrome-text text-3xl md:text-4xl mb-6">배송지</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
             <Field label="우편번호" required value={form.shipping_postcode} onChange={(v) => setForm({ ...form, shipping_postcode: v })} placeholder="5자리" />
             <div className="hidden sm:block" />
@@ -97,7 +97,7 @@ export default function CheckoutPage() {
 
         <div>
           <div className="eyebrow mb-3">— Step 3</div>
-          <h2 className="font-gothic chrome-text text-3xl md:text-4xl mb-6">결제 (무통장입금)</h2>
+          <h2 className="chrome-text text-3xl md:text-4xl mb-6">결제 (무통장입금)</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
             <Field label="입금자명" required value={form.depositor_name} onChange={(v) => setForm({ ...form, depositor_name: v })} />
           </div>
