@@ -47,7 +47,7 @@ export default async function ProductDetailPage({
     <article className="container-page pt-12 pb-24 grid md:grid-cols-2 gap-12">
       {/* Gallery */}
       <div className="space-y-3">
-        <div className="relative aspect-[4/5] bg-sand overflow-hidden">
+        <div className="relative aspect-[4/5] overflow-hidden">
           {product.thumbnail_url && (
             <Image src={product.thumbnail_url} alt={product.name} fill className="object-contain" priority sizes="(max-width: 768px) 100vw, 50vw" />
           )}
@@ -55,7 +55,7 @@ export default async function ProductDetailPage({
         {imgs.length > 0 && (
           <div className="grid grid-cols-4 gap-3">
             {imgs.map((img) => (
-              <div key={img.id} className="relative aspect-square bg-sand">
+              <div key={img.id} className="relative aspect-square">
                 <Image src={img.url} alt={img.alt ?? ""} fill className="object-cover" sizes="120px" />
               </div>
             ))}
