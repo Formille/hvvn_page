@@ -38,8 +38,8 @@ export default async function HomePage() {
                 <span className="absolute top-2 right-2 text-[10px] tracking-widest2 uppercase bg-chrome text-black px-2 py-0.5">Sold out</span>
               )}
             </div>
-            <div className="mt-5 font-gothic text-xl md:text-2xl text-chrome leading-none">{p.name}</div>
-            <div className="mt-1 text-sm text-muted">{formatKRW(p.price_krw)}</div>
+            <div className="mt-5 font-gothic chrome-text text-2xl md:text-3xl leading-none">{p.name}</div>
+            <div className="mt-1 text-sm chrome-text-soft font-gothic tracking-wider">{formatKRW(p.price_krw)}</div>
           </Link>
         ))}
         {products.length === 0 && (

@@ -67,7 +67,7 @@ export default async function ProductDetailPage({
       <div className="md:sticky md:top-24 self-start">
         <div className="eyebrow mb-3">{product.is_set ? "Set" : "Item"}</div>
         <h1 className="font-gothic chrome-text text-4xl md:text-5xl leading-tight">{product.name}</h1>
-        <div className="mt-4 text-xl">{formatKRW(product.price_krw)}</div>
+        <div className="mt-4 font-gothic chrome-text text-3xl">{formatKRW(product.price_krw)}</div>
 
         {product.short_description && (
           <p className="mt-6 text-[14px] text-muted leading-relaxed">{product.short_description}</p>

@@ -43,10 +43,10 @@ export default function CartPage() {
               </Link>
               <div className="flex-1 min-w-0 flex flex-col">
                 <div className="flex justify-between gap-3">
-                  <Link href={`/products/${l.slug}`} className="font-gothic text-xl sm:text-2xl text-chrome leading-tight hover:opacity-70 transition truncate">
+                  <Link href={`/products/${l.slug}`} className="font-gothic chrome-text text-2xl sm:text-3xl leading-tight hover:opacity-80 transition truncate">
                     {l.name}
                   </Link>
-                  <div className="text-sm text-chrome whitespace-nowrap">{formatKRW(l.price_krw * l.quantity)}</div>
+                  <div className="text-sm chrome-text-soft font-gothic whitespace-nowrap">{formatKRW(l.price_krw * l.quantity)}</div>
                 </div>
                 <div className="text-xs text-muted mt-1">{formatKRW(l.price_krw)} / 개</div>
                 <div className="flex items-center gap-4 mt-auto pt-3">
@@ -65,9 +65,9 @@ export default function CartPage() {
         <aside className="lg:col-span-1">
           <div className="border border-line p-6 lg:sticky lg:top-24 space-y-4">
             <div className="eyebrow">— Summary</div>
-            <div className="flex justify-between text-sm">
-              <span className="text-muted">상품 합계</span>
-              <span className="text-chrome">{formatKRW(subtotal)}</span>
+            <div className="flex justify-between items-baseline">
+              <span className="text-sm text-muted">상품 합계</span>
+              <span className="font-gothic chrome-text text-2xl">{formatKRW(subtotal)}</span>
             </div>
             <p className="text-xs text-muted">배송비는 결제 단계에서 계산됩니다.</p>
             <div className="hairline" />

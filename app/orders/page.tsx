@@ -99,9 +99,9 @@ export default function OrdersPage() {
                 <span className="text-muted">배송비</span>
                 <span>{formatKRW(o.shipping_fee_krw)}</span>
               </div>
-              <div className="flex justify-between text-base mt-1">
-                <span>합계</span>
-                <span className="font-medium">{formatKRW(o.total_krw)}</span>
+              <div className="flex justify-between items-baseline mt-1">
+                <span className="text-sm text-muted">합계</span>
+                <span className="font-gothic chrome-text text-xl">{formatKRW(o.total_krw)}</span>
               </div>
               <div className="mt-4 flex gap-2">
                 <button onClick={() => setInquiryFor(inquiryFor === o.id ? null : o.id)} className="btn-ghost px-0 underline">

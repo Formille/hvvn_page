@@ -52,7 +52,24 @@ body {
     @apply font-gothic text-5xl md:text-7xl leading-[1.02] tracking-tight text-chrome;
   }
   .chrome-text {
-    background: linear-gradient(180deg, #ffffff 0%, #c3c8e6 45%, #6e76b4 55%, #eef0fb 100%);
+    background-image: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d8dce8 18%,
+      #8b91ad 42%,
+      #3d4262 50%,
+      #8b91ad 58%,
+      #d8dce8 82%,
+      #ffffff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 0 6px rgba(140, 150, 220, 0.18));
+  }
+  .chrome-text-soft {
+    background-image: linear-gradient(180deg, #f1f3fb 0%, #b9bdd2 45%, #7c809a 55%, #e7e9f3 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
