@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-sans: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  /* Latin → Kanchenjunga, Korean → Gowun Dodum (per-glyph fallback). */
+  --font-sans: "Kanchenjunga", "Gowun Dodum", system-ui, sans-serif;
   --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
   --font-gothic: "Pirata One", "UnifrakturCook", Georgia, serif;
   /* Latin → Kanchenjunga, Korean → Gowun Dodum (per-glyph fallback). */
